@@ -33,3 +33,11 @@ AUDIO_ENABLE     = no		# Audio output on port C6
 UNICODE_ENABLE   = no		# Unicode
 RGBLIGHT_ENABLE  = no		# Enable WS2812 RGB underlight.
 SLEEP_LED_ENABLE = no		# Breathing sleep LED during USB suspend
+HHKB_RN42_ENABLE = yes		# Enable support for hasu's BT alt controller
+
+# Remove warring errors when HHKB BT is enabled
+ifeq ($(strip $(HHKB_RN42_ENABLE)), yes)
+
+OPT_DEFS += -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-function
+
+endif
