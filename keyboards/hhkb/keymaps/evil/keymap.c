@@ -34,9 +34,11 @@
 // For Dynamic macros
 enum hhkb_keycodes
   {
-   M_EMAIL = SAFE_RANGE,
+   M_NAME = SAFE_RANGE,
+   M_EMAIL,
    M_PASS,
    M_LOGIN,
+   M_SIGNATURE,
    DYNAMIC_MACRO_RANGE,
   };
 
@@ -81,8 +83,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 
    // Macros
    [LMACRO] = LAYOUT(DYN_REC_STOP, DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
-					 ___, DYN_REC_START1, DYN_REC_START2, ___, M_PASS, ___, ___, ___, ___, ___, M_LOGIN, ___, ___, ___,
-					 ___, ___, M_EMAIL, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
+					 ___, DYN_REC_START1, DYN_REC_START2, ___, M_PASS, M_NAME, ___, ___, ___, ___, M_LOGIN, ___, ___, ___,
+					 ___, ___, M_EMAIL, ___, ___, ___, ___, ___, ___, M_NAME, M_SIGNATURE, ___, ___,
 					 ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
 					 ___, ___, /*		*/ ___ /*		*/, ___, ___)
   };
@@ -117,6 +119,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
   case M_LOGIN:
 	if(!record->event.pressed){
 	  SEND_STRING(""SS_TAP(X_ENTER));
+	}
+	break;
+  case M_NAME:
+	if(!record->event.pressed){
+	  SEND_STRING("Yad");
+	}
+	break;
+  case M_SIGNATURE:
+	if(!record->event.pressed){
+	  SEND_STRING("​--------------------------" SS_TAP(X_ENTER)
+				  "​Yad Tahir, PhD" SS_TAP(X_ENTER)
+				  "Public Key: https://bit.ly/2JFTRHD" SS_TAP(X_ENTER)
+				  "Fingerprint: 39B3 A279 DAC6 7985 0722 3B74 E130 54FA 1432 F996" SS_TAP(X_ENTER));
 	}
 	break;
   }
