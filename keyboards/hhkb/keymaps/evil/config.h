@@ -41,4 +41,11 @@
 #define MOUSEKEY_TIME_TO_MAX 8
 #define MOUSEKEY_WHEEL_DELAY 0
 
+// Waiting time for a tap to become a hold
+#undef TAPPING_TERM
+#define TAPPING_TERM 250
+
+// Avoid injecting MOD keys during TAPPING_TERM
+#undef PERMISSIVE_HOLD
+
 #endif
