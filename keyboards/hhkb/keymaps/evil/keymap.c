@@ -107,18 +107,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
   switch (keycode) {
   case M_EMAIL:
 	if(!record->event.pressed){
-	  SEND_STRING("");
+	  SEND_STRING("yad@ieee.org");
 	}
 	break;
   case M_PASS:
 	if(!record->event.pressed){
-	  SEND_STRING("");
+	  SEND_STRING("*hidden*");
 	}
 	break;
 
   case M_LOGIN:
 	if(!record->event.pressed){
-	  SEND_STRING(""SS_TAP(X_ENTER));
+	  SEND_STRING("*hidden*" SS_TAP(X_ENTER));
 	}
 	break;
   case M_NAME:
