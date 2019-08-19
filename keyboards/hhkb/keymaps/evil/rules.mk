@@ -21,6 +21,7 @@
 #   change to "no" to disable the options, or define them in the Makefile in
 #   the appropriate keymap folder that will get included automatically
 #
+
 BOOTMAGIC_ENABLE = no		# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE  = yes		# Mouse keys(+4700)
 EXTRAKEY_ENABLE  = yes		# Audio control and System control(+450)
@@ -38,6 +39,7 @@ HHKB_RN42_ENABLE = yes		# Enable support for hasu's BT alt controller
 # Remove warring errors when HHKB BT is enabled
 ifeq ($(strip $(HHKB_RN42_ENABLE)), yes)
 
-OPT_DEFS += -Wno-unused-variable -Wno-unused-but-set-variable -Wno-unused-function
-
+OPT_DEFS += -Wno-unused-variable \
+			-Wno-unused-but-set-variable \
+			-Wno-unused-function
 endif
