@@ -65,7 +65,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
 				   KC_CAPS, KC_HOME, KC_PGUP, KC_WH_U, KC_NO, KC_NO, KC_NO, KC_HOME, KC_UP, KC_PGUP, KC_BTN1, KC_MS_U, KC_BTN2, KC_DEL,
 				   ___, KC_VOLD, KC_MUTE, KC_VOLU, KC_MPRV, KC_MPLY, KC_MNXT, KC_LEFT, KC_DOWN, KC_RGHT, KC_MS_L, KC_MS_R, ___,
 				   ___, KC_END, KC_PGDN, KC_WH_D, KC_NO, KC_NO, KC_NO, KC_END, KC_NO, KC_PGDN, KC_MS_D, ___, TG(QWERTY),
-				   ___, ___, /*		*/ ___ /*		*/, TG(LATEX), TG(WIN)),
+				   ___, ___, /*		*/ ___ /*		*/, TG(WIN), TG(LATEX)),
 
    // Swap CTRL and SUPER
    [WIN] = LAYOUT(___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
@@ -84,7 +84,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
    // Macros
    [LMACRO] = LAYOUT(DYN_REC_STOP, DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
 					 ___, DYN_REC_START1, DYN_REC_START2, ___, M_PASS, M_NAME, ___, ___, ___, ___, M_LOGIN, ___, ___, ___,
-					 ___, ___, M_EMAIL, ___, ___, ___, ___, ___, ___, M_NAME, M_SIGNATURE, ___, ___,
+					 ___, ___, ___, M_EMAIL, ___, ___, ___, ___, ___, M_NAME, M_SIGNATURE, ___, ___,
 					 ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
 					 ___, ___, /*		*/ ___ /*		*/, ___, ___)
   };
@@ -107,24 +107,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
   if(keycode == M_EMAIL && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("yad@ieee.org");
-  }
-
-  if(keycode == M_PASS && record->event.pressed){
+  } else if(keycode == M_PASS && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("*hidden*");
-  }
-
-  if(keycode == M_LOGIN && record->event.pressed){
+  } else if(keycode == M_LOGIN && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("*hidden*" SS_TAP(X_ENTER));
-  }
-
-  if(keycode == M_NAME && record->event.pressed){
+  } else if(keycode == M_NAME && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("Yad");
-  }
-
-  if(keycode == M_SIGNATURE && record->event.pressed){
+  } else if(keycode == M_SIGNATURE && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("​--------------------------" SS_TAP(X_ENTER)
 				"​Yad Tahir, PhD" SS_TAP(X_ENTER)
