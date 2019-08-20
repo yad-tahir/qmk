@@ -48,4 +48,8 @@
 // Avoid injecting MOD keys during TAPPING_TERM
 #undef PERMISSIVE_HOLD
 
+// One shot keys
+#define ONESHOT_TAP_TOGGLE 20  // Avoid auto-holding one shot keys
+#define ONESHOT_TIMEOUT 1000  // Time before the one shot key is released
+
 #endif
