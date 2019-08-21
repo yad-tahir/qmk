@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
    // Dvorak
    [BASE] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV, KC_BSLS, KC_LBRC, KC_RBRC,
 				   KC_TAB, KC_QUOT, KC_COMM, KC_DOT, KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_SLSH, KC_EQL, KC_BSPC,
-				   KC_LCTL, KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_MINS, KC_ENT,
+				   OSM(MOD_LCTL), KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_MINS, KC_ENT,
 				   OSM(MOD_LSFT), KC_SCLN, LT(LMACRO,KC_Q), KC_J, KC_K, KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z, OSM(MOD_RSFT), KC_F5,
-				   KC_LALT, KC_LGUI, /*		*/ LT(HHKB,KC_SPC) /*		*/, KC_F2, KC_F3),
+				   OSM(MOD_LALT), OSM(MOD_LGUI), /*		*/ LT(HHKB,KC_SPC) /*		*/, KC_F2, KC_F3),
 
    // QWERTY
    [QWERTY] = LAYOUT(___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, KC_GRV, KC_MINS, KC_EQL, KC_BSLS,
