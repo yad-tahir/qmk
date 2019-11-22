@@ -38,8 +38,7 @@ enum hhkb_keycodes
    M_EMAIL,
    M_PASS,
    M_LOGIN,
-   M_SIGNATURE,
-   DYNAMIC_MACRO_RANGE,
+   DYNAMIC_MACRO_RANGE
   };
 
 #include "dynamic_macro.h"
@@ -49,9 +48,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
    // Dvorak
    [BASE] = LAYOUT(KC_ESC, KC_1, KC_2, KC_3, KC_4, KC_5, KC_6, KC_7, KC_8, KC_9, KC_0, KC_GRV, KC_BSLS, KC_LBRC, KC_RBRC,
 				   KC_TAB, KC_QUOT, KC_COMM, KC_DOT, KC_P, KC_Y, KC_F, KC_G, KC_C, KC_R, KC_L, KC_SLSH, KC_EQL, KC_BSPC,
-				   OSM(MOD_LCTL), KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_MINS, KC_ENT,
+				   KC_LCTL, KC_A, KC_O, KC_E, KC_U, KC_I, KC_D, KC_H, KC_T, KC_N, KC_S, KC_MINS, KC_ENT,
 				   OSM(MOD_LSFT), KC_SCLN, LT(LMACRO,KC_Q), KC_J, KC_K, KC_X, KC_B, KC_M, KC_W, KC_V, KC_Z, OSM(MOD_RSFT), KC_F5,
-				   OSM(MOD_LALT), OSM(MOD_LGUI), /*		*/ LT(HHKB,KC_SPC) /*		*/, KC_F2, KC_F3),
+				   KC_LALT, KC_LGUI, /*		*/ LT(HHKB,KC_SPC) /*		*/, KC_F2, KC_F3),
 
    // QWERTY
    [QWERTY] = LAYOUT(___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, KC_GRV, KC_MINS, KC_EQL, KC_BSLS,
@@ -84,7 +83,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] =
    // Macros
    [LMACRO] = LAYOUT(DYN_REC_STOP, DYN_MACRO_PLAY1, DYN_MACRO_PLAY2, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
 					 ___, DYN_REC_START1, DYN_REC_START2, ___, M_PASS, M_NAME, ___, ___, ___, ___, M_LOGIN, ___, ___, ___,
-					 ___, ___, ___, M_EMAIL, ___, ___, ___, ___, ___, M_NAME, M_SIGNATURE, ___, ___,
+					 ___, ___, ___, M_EMAIL, ___, ___, ___, ___, ___, M_NAME, ___, ___, ___,
 					 ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___, ___,
 					 ___, ___, /*		*/ ___ /*		*/, ___, ___)
   };
@@ -116,12 +115,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record)
   } else if(keycode == M_NAME && record->event.pressed){
 	clear_keyboard_but_mods();
 	SEND_STRING("Yad");
-  } else if(keycode == M_SIGNATURE && record->event.pressed){
-	clear_keyboard_but_mods();
-	SEND_STRING("​--------------------------" SS_TAP(X_ENTER)
-				"​Yad Tahir, PhD" SS_TAP(X_ENTER)
-				"Public Key: https://bit.ly/2JFTRHD" SS_TAP(X_ENTER)
-				"Fingerprint: 39B3 A279 DAC6 7985 0722 3B74 E130 54FA 1432 F996" SS_TAP(X_ENTER));
   }
 
   // Continue process the key as usual. If this function returns false, QMK will

@@ -25,21 +25,32 @@
 BOOTMAGIC_ENABLE = no		# Virtual DIP switch configuration(+1000)
 MOUSEKEY_ENABLE  = yes		# Mouse keys(+4700)
 EXTRAKEY_ENABLE  = yes		# Audio control and System control(+450)
-CONSOLE_ENABLE   = no		# Console for debug(+400)
 COMMAND_ENABLE   = no		# Commands for debug and configuration
-NKRO_ENABLE      = yes		# Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
+NKRO_ENABLE      = no		# Nkey Rollover - if this doesn't work, see here: https://github.com/tmk/tmk_keyboard/wiki/FAQ#nkro-doesnt-work
 BACKLIGHT_ENABLE = no		# Enable keyboard backlight functionality
 MIDI_ENABLE      = no		# MIDI controls
 AUDIO_ENABLE     = no		# Audio output on port C6
 UNICODE_ENABLE   = no		# Unicode
 RGBLIGHT_ENABLE  = no		# Enable WS2812 RGB underlight.
 SLEEP_LED_ENABLE = no		# Breathing sleep LED during USB suspend
-HHKB_RN42_ENABLE = yes		# Enable support for hasu's BT alt controller
+HHKB_RN42_ENABLE = no		# Enable support for hasu's BT alt controller
 
-# Remove warring errors when HHKB BT is enabled
+
 ifeq ($(strip $(HHKB_RN42_ENABLE)), yes)
 
-OPT_DEFS += -Wno-unused-variable \
-			-Wno-unused-but-set-variable \
-			-Wno-unused-function
+OPT_DEFS += -DHHKB_RN42_ENABLE
+
+# Support for the RN42 Bluetooth module. This is the BT module in Hasu's BT
+# HHKB Alt controller.
+RN42_DIR = rn42
+
+SRC +=  serial_uart.c \
+	rn42/suart.S \
+	rn42/rn42.c \
+	rn42/rn42_task.c \
+	rn42/battery.c \
+	rn42/main.c
+
+VPATH += $(RN42_DIR)
+
 endif

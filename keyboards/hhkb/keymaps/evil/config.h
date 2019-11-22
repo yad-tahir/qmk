@@ -43,13 +43,15 @@
 
 // Waiting time for a tap to become a hold
 #undef TAPPING_TERM
-#define TAPPING_TERM 250
+#define TAPPING_TERM 230
 
 // Avoid injecting MOD keys during TAPPING_TERM
 #undef PERMISSIVE_HOLD
 
 // One shot keys
-#define ONESHOT_TAP_TOGGLE 20  // Avoid auto-holding one shot keys
+#define ONESHOT_TAP_TOGGLE 99  // Avoid auto-holding one shot keys
 #define ONESHOT_TIMEOUT 1000  // Time before the one shot key is released
 
+/* #undef HHKB_RN42_ENABLE */
+/* #define HHKB_RN42_ENABLE no */
 #endif

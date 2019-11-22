@@ -9,6 +9,7 @@ cd $PWD/../../
 pwd
 
 echo "Generating a .hex file"
+make clean
 make hhkb:evil
 
 echo "Deploying the .hex file"
